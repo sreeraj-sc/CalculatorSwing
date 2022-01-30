@@ -10,6 +10,9 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener
 {
+	boolean isOperatorClicked=false;
+	String oldValue, newValue;
+	float oldValueF, newValueF, result;
 	JFrame jf;
 	JLabel displayLabel;
 	JButton sevenButton;
@@ -28,6 +31,7 @@ public class Calculator implements ActionListener
 	JButton mulButton;
 	JButton subButton;
 	JButton addButton;
+	JButton clearButton;
 	
 	public static void main(String[] args) 
 	{
@@ -37,7 +41,7 @@ public class Calculator implements ActionListener
 	{
 		jf=new JFrame("Calculator");
 		jf.setLayout(null);
-		jf.setSize(450, 650);
+		jf.setSize(450, 750);
 		jf.setLocation(1070, 100);
 		displayLabel=new JLabel();
 		displayLabel.setBounds(40, 40, 355, 40);
@@ -126,59 +130,187 @@ public class Calculator implements ActionListener
 		addButton.setFont(new Font("Areal", Font.PLAIN, 40));
 		addButton.addActionListener(this);
 		jf.add(addButton);
+		clearButton=new JButton("ce");
+		clearButton.setBounds(330, 530, 80, 80);
+		clearButton.setFont(new Font("Areal", Font.PLAIN, 40));
+		clearButton.addActionListener(this);
+		jf.add(clearButton);
 		jf.setVisible(true);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
 		if(e.getSource()==sevenButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"7");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("7");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"7");
+			}
 		}
 		else if(e.getSource()==eightButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"8");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("8");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"8");
+			}
 		}
 		else if(e.getSource()==nineButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"9");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("9");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"9");
+			}
 		}
 		else if(e.getSource()==fourButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"4");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("4");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"4");
+			}
 		}
 		else if(e.getSource()==fiveButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"5");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("5");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"5");
+			}
 		}
 		else if(e.getSource()==sixButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"6");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("6");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"6");
+			}
 		}
 		else if(e.getSource()==oneButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"1");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("1");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"1");
+			}
 		}
 		else if(e.getSource()==twoButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"2");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("2");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"2");
+			}
 		}
 		else if(e.getSource()==threeButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"3");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("3");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"3");
+			}
 		}
 		else if(e.getSource()==dotButton)
 		{
-			displayLabel.setText(displayLabel.getText()+".");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText(".");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+".");
+			}
 		}
 		else if(e.getSource()==zeroButton)
 		{
-			displayLabel.setText(displayLabel.getText()+"0");
+			if(isOperatorClicked)
+			{
+				displayLabel.setText("0");
+				isOperatorClicked=false;
+			}
+			else
+			{
+				displayLabel.setText(displayLabel.getText()+"0");
+			}
+		}
+		else if(e.getSource()==clearButton)
+		{
+			displayLabel.setText("");
+		}
+		else if(e.getSource()==equalButton)
+		{
+			newValue=displayLabel.getText();
+			oldValueF=Float.parseFloat(oldValue);
+			newValueF=Float.parseFloat(newValue);
+			result=oldValueF+newValueF;
+			displayLabel.setText(result+"");
+		}
+		else if(e.getSource()==divButton)
+		{
+			isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			displayLabel.setText("");
+		}
+		else if(e.getSource()==mulButton)
+		{
+			isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			displayLabel.setText("");
+		}
+		else if(e.getSource()==subButton)
+		{
+			isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			displayLabel.setText("");
+		}
+		else if(e.getSource()==addButton)
+		{
+			isOperatorClicked=true;
+			oldValue=displayLabel.getText();
+			displayLabel.setText("");
 		}
 		else
 		{
-			displayLabel.setText("Invalid");
+			displayLabel.setText("");
 		}
 	}
 }
